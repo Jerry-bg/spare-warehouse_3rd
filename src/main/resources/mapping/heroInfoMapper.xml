@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kons.repository.IHeroMapper">
+
+    <cache type="com.kons.cache.RedisCache"/>
+
+    <select id="findById" resultType="HeroInfo" useCache="true">
+        SELECT hero_id,name ,alias,title
+        FROM hero_info
+        WHERE hero_id=#{id}
+    </select>
+
+    <select id="findAll" resultType="HeroInfo" useCache="true">
+        SELECT hero_id,name ,alias,title
+        FROM hero_info
+    </select>
+
+    <insert id="saveOrUpdate" parameterType="HeroInfo">
+        INSERT INTO hero_info(hero_id,name,alias,title) VALUES
+        (#{heroId},#{name},#{alias},#{title})
+    </insert>
+
+    <insert id="saveAll" parameterType="java.util.List">
+        INSERT INTO hero_info(hero_id,name,alias,title) VALUES
+        <foreach collection="list" item="hero" separator=",">
+            (#{hero.heroId},#{hero.name},#{hero.alias},#{hero.title})
+        </foreach>
+    </insert>
+
+</mapper>
