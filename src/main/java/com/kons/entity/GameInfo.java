@@ -1,8 +1,10 @@
 package com.kons.entity;
 
+import java.util.Date;
+
 public class GameInfo {
     private String gameId;
-    private long timestamp;
+    private Date timestamp;
     private int teamWinId;
     private long gameStartTimestamp;
 
@@ -14,11 +16,11 @@ public class GameInfo {
         this.gameId = gameId;
     }
 
-    public long getTimestamp() {
+    public Date getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(long timestamp) {
+    public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
 
