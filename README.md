@@ -17,4 +17,18 @@
   url_game_detial = https://lol.sw.game.qq.com/lol/api/?c=Battle&a=combatGains&areaId=25&gameId={0}&r1=combatGains
   ```
 
+* **添加简易的爬虫框架**
+
+  <img src="C:\Users\86157\Downloads\未命名文件.png" alt="爬虫框架" style="zoom:100%;" />
+
+  > 简单介绍
+
+  `@HttpRequest`：封装Http请求，以及设置请求头部信息
+
+  `@Schedule`：调度器中提供请求信息队列和响应信息队列
+
+  `@Downloader`：获取调度队列中的请求进行下载，将响应信息封装成HttpResponse添加进调度							器中的响应队列
+
+  `@Processor`：处理器，将调度器中的响应信息按照指定的处理策略处理数据
+
   
