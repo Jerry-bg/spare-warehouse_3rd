@@ -9,7 +9,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.Map;
 
-public class DownLoader {
+public class DownLoader extends AbstractDownloader{
 
     public HttpResponse download(HttpRequest request) throws IOException {
         URL url=new URL(request.getUrl());
@@ -23,7 +23,7 @@ public class DownLoader {
         InputStream stream=connection.getInputStream();
 
         HttpResponse response=new HttpResponse();
-        response.setData(stream);
+        response.setData(toByteInputStream(stream));
         response.setHeader(connection.getHeaderFields());
         stream.close();
         return response;
